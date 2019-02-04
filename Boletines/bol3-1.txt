@@ -1,0 +1,81 @@
+public class Gallina
+	private nombre: CADENA
+	private peso: ENTERO
+	private numHuevos: ENTERO
+
+	public Gallina (nombre:CADENA, peso:ENTERO)
+		this.nombre = nombre
+		this.peso = peso
+		this.numHuevos = 0
+	FIN
+
+	public Gallina (peso:ENTERO)
+		this.nombre = ""
+		this.peso = peso
+		this.numHuevos = 0
+	FIN
+
+	private METODO come(cantidad:ENTERO) 
+		VARIABLES
+		engorda: ENTERO
+		COMIENZO
+		engorda = cantidad / 2
+		SI (this.peso + engorda > 3000)
+			ESCRIBIR (this.nombre, " ha engordado ", 3000 - this.peso, " gramos")
+			this.peso = 3000
+		SINO
+			ESCRIBIR (this.nombre, " ha engordado ", engorda, " gramos")
+			this.peso = this.peso + engorda
+		FIN SI
+		Escribir ("ahora pesa ", this.peso)
+	FIN
+
+	private METODO ponHuevo():BOOLEANO
+		VARIABLES
+		result: BOOLEANO
+		COMIENZO
+		SI esPosiblePonerHuevo()
+			result = CIERTO
+			ESCRIBIR (this.nombre, "huevo puesto")
+			this.peso = this.peso - 100
+			this.numHuevos = this.numHuevos + 1
+		SINO
+			result = FALSO
+			ESCRIBIR (this.nombre, " no puede poner huevos")
+		FIN SI
+		DEVOLVER result
+	FIN
+	
+	private METODO esPosiblePonerHuevo ( ) : BOOLEANO
+		VARIABLES
+		resul t : BOOLEANO
+		COMIENZO
+		SI this.peso < 1000
+			result = FALSO
+		SINO
+			result = CIERTO
+		FIN SI
+		DEVOLVER result
+	FIN
+
+	private METODO toString ()
+		ESCRIBIR ("Nombre: ", nombre)
+		ESCRIBIR ("Peso: ", peso)
+		ESCRIBIR ("Numero de huevos puesto: ", numHuevos)
+	FIN
+
+FIN Gallina
+
+1. Clase publica, atributos y metodos privados
+
+2. Nuevo constructor con solo el peso
+
+3. Metodo toString
+
+4. Modificacion del metodo come
+
+5. Añadido atributo numHuevos, incrementa numHuevos en el metodo ponHuevo, toString muestra el numero de huevos
+
+6. Clase publica, para poder acceder a los metodos publicos desde otro paquetes
+
+7. Nueva clase granja
